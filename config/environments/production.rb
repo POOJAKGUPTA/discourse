@@ -15,6 +15,7 @@ Discourse::Application.configure do
   config.public_file_server.enabled = GlobalSetting.serve_static_assets || false
 
   config.assets.js_compressor = :uglifier
+  config.assets.initialize_on_precompile = false
 
   # stuff should be pre-compiled
   config.assets.compile = false
