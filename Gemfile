@@ -92,7 +92,7 @@ gem 'omniauth-oauth2', require: false
 gem 'omniauth-google-oauth2'
 
 gem 'oj'
-gem 'pg'
+gem 'pg' , '~> 0.18'
 gem 'mini_sql'
 gem 'pry-rails', require: false
 gem 'r2', '~> 0.2.5', require: false
