@@ -115,18 +115,18 @@ def gzip(path)
 end
 
 # different brotli versions use different parameters
-def brotli_command(path, max_compress)
-  compression_quality = max_compress ? "11" : "6"
-  "brotli -f --quality=#{compression_quality} #{path} --output=#{path}.br"
-end
+# def brotli_command(path, max_compress)
+#   compression_quality = max_compress ? "11" : "6"
+#   "brotli -f --quality=#{compression_quality} #{path} --output=#{path}.br"
+# end
 
-def brotli(path, max_compress)
-  STDERR.puts brotli_command(path, max_compress)
-  STDERR.puts `#{brotli_command(path, max_compress)}`
-  raise "brotli compression failed: exit code #{$?.exitstatus}" if $?.exitstatus != 0
-  STDERR.puts `chmod +r #{path}.br`.strip
-  raise "chmod failed: exit code #{$?.exitstatus}" if $?.exitstatus != 0
-end
+# def brotli(path, max_compress)
+#   STDERR.puts brotli_command(path, max_compress)
+#   STDERR.puts `#{brotli_command(path, max_compress)}`
+#   raise "brotli compression failed: exit code #{$?.exitstatus}" if $?.exitstatus != 0
+#   STDERR.puts `chmod +r #{path}.br`.strip
+#   raise "chmod failed: exit code #{$?.exitstatus}" if $?.exitstatus != 0
+# end
 
 def max_compress?(path, locales)
   return false if Rails.configuration.assets.skip_minification.include? path
@@ -266,7 +266,7 @@ task 'assets:precompile' => 'assets:precompile:before' do
               info["size"] = File.size(path)
               info["mtime"] = File.mtime(path).iso8601
               gzip(path)
-              brotli(path, max_compress)
+              # brotli(path, max_compress)
 
               STDERR.puts "Done compressing #{file} : #{(Process.clock_gettime(Process::CLOCK_MONOTONIC) - start).round(2)} secs"
               STDERR.puts
