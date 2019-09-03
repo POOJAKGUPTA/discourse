@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: discourse_11
+  pool: 5
+  username: bittern105
+  password: root
+  host: localhost
+
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: discourse_11
+  pool: 5
+  username: bittern105
+  password: root
+  host: localhost
