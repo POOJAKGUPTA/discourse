@@ -1,1 +1,7 @@
+development:
 uri: <%= uri = URI.parse(ENV['OPENREDIS_URL'] || "redis://localhost:6379") %>
+production:
+uri: <%= uri = URI.parse(ENV['OPENREDIS_URL'] || "redis://h:p2e9ea91540150af2c56a87d2f0c2f3a560133a33006f5caa8e57408df58cf1dc@ec2-3-221-181-201.compute-1.amazonaws.com:10339
+") %>
+
+
